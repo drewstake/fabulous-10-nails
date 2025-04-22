@@ -1,0 +1,28 @@
+.servicesSection {
+    padding: 5rem 0;
+    background: white;
+  }
+  
+  .servicesGrid {
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    gap: 2rem;
+  }
+  @media(min-width:640px){.servicesGrid{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:1024px){.servicesGrid{grid-template-columns:repeat(4,1fr)}}
+  
+  .serviceCard {
+    background: #fef2f2; /* bg-pink-50 */
+    padding: 1.5rem;
+    border-radius: .5rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    display:flex; flex-direction:column;
+  }
+  
+  .servicesNote {
+    text-align:center;
+    color:#4b5563;
+    margin-top:3rem;
+    font-size:.875rem;
+  }
+  

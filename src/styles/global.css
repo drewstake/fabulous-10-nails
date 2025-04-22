@@ -1,0 +1,5 @@
+/* Box‐sizing & resets */
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  

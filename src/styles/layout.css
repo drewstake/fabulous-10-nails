@@ -1,0 +1,20 @@
+/* App container */
+.appContainer {
+    min-height: 100vh;
+    background-color: #fef2f2; /* bg-pink-50 */
+    font-family: sans-serif;  /* font-sans */
+    color: #1f2937;            /* text-gray-800 */
+  }
+  
+  /* Central container */
+  .container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem; /* px-6 */
+  }
+  @media (min-width: 640px)  { .container { max-width:  640px; } }
+  @media (min-width: 768px)  { .container { max-width:  768px; } }
+  @media (min-width: 1024px) { .container { max-width: 1024px; } }
+  @media (min-width: 1280px) { .container { max-width: 1280px; } }
+  @media (min-width: 1536px) { .container { max-width: 1536px; } }
+  
