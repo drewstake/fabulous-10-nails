@@ -8,12 +8,12 @@ A modern, responsive salon website built with React, Tailwind CSS, and AWS Ampli
 ## Features
 
 - **Modular React Components:** Header, Hero, Services, Gallery, Testimonials, Booking CTA, Contact, and Footer
-- **Continuous Testimonials Carousel:** Infinite‑scroll slider with real reviews
-- **Tailwind CSS:** Utility‑first styling for rapid, consistent design
-- **AWS Amplify CI/CD:** Auto‑deploys both `main` (production) and `development` (staging) branches
+- **Continuous Testimonials Carousel:** Infinite‐scroll slider with real reviews
+- **Tailwind CSS:** Utility‐first styling for rapid, consistent design
+- **AWS Amplify CI/CD:** Auto‐deploys both `main` (production) and `development` (staging) branches
 - **Auth Flow:** React Router login/signup forms wired to an Express/Mongoose backend with JWT
 - **MongoDB:** Stores user credentials, secure password hashing via bcrypt
-- **Responsive:** Mobile‑first design with fixed header and smooth animations
+- **Responsive:** Mobile‐first design with fixed header and smooth animations
 
 ## Tech Stack
 
