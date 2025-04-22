@@ -1,32 +1,39 @@
+It looks like two things are tripping up GitHub’s Markdown renderer:
+
+1. **Non‐breaking spaces** (` `) instead of normal spaces.  
+2. **Trailing double‑spaces** on list lines to force line breaks (you don’t actually need them here).
+
+Here’s a cleaned‑up version—just copy this into your `README.md`, replacing the old content:
+
 ```markdown
-# Fabulous 10 Nails Salon Website
+# Fabulous 10 Nails Salon Website
 
-Live Site: [https://www.fabulous10nails.com/](https://www.fabulous10nails.com/)
+**Live Site:** [https://www.fabulous10nails.com/](https://www.fabulous10nails.com/)
 
-A modern, responsive salon website built with React, Tailwind CSS, and AWS Amplify, featuring a booking flow, dynamic gallery, and secure user authentication.
+A modern, responsive salon website built with React, Tailwind CSS, and AWS Amplify, featuring a booking flow, dynamic gallery, and secure user authentication.
 
 ## Features
 
-- **Modular React Components**: Header, Hero, Services, Gallery, Testimonials, Booking CTA, Contact, and Footer  
-- **Continuous Testimonials Carousel**: Infinite‑scroll slider with real reviews  
-- **Tailwind CSS**: Utility‑first styling for rapid, consistent design  
-- **AWS Amplify CI/CD**: Auto‑deploys both `main` (production) and `development` (staging) branches  
-- **Auth Flow**: React Router login/signup forms wired to an Express/Mongoose backend with JWT  
-- **MongoDB**: Stores user credentials, secure password hashing via bcrypt  
-- **Responsive**: Mobile‑first design with fixed header and smooth animations  
+- **Modular React Components:** Header, Hero, Services, Gallery, Testimonials, Booking CTA, Contact, and Footer
+- **Continuous Testimonials Carousel:** Infinite‑scroll slider with real reviews
+- **Tailwind CSS:** Utility‑first styling for rapid, consistent design
+- **AWS Amplify CI/CD:** Auto‑deploys both `main` (production) and `development` (staging) branches
+- **Auth Flow:** React Router login/signup forms wired to an Express/Mongoose backend with JWT
+- **MongoDB:** Stores user credentials, secure password hashing via bcrypt
+- **Responsive:** Mobile‑first design with fixed header and smooth animations
 
 ## Tech Stack
 
-- **Frontend**: React, React Router, Tailwind CSS  
-- **Backend**: Node.js, Express, Mongoose (MongoDB), JWT, bcrypt  
-- **Hosting & Deployment**: AWS Amplify  
-- **CI/CD**: Amplify Build & Deploy from GitHub branches  
+- **Frontend:** React, React Router, Tailwind CSS  
+- **Backend:** Node.js, Express, Mongoose (MongoDB), JWT, bcrypt  
+- **Hosting & Deployment:** AWS Amplify  
+- **CI/CD:** Amplify Build & Deploy from GitHub branches  
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js ≥14  
+- Node.js ≥ 14  
 - npm or yarn  
 - MongoDB URI (for local or Atlas)  
 - AWS account for Amplify (optional)
@@ -82,3 +89,9 @@ A modern, responsive salon website built with React, Tailwind CSS, and AWS Amp
 
 This project is open‑source under the MIT License.
 ```
+
+**Key fixes:**
+- Replaced all ` ` (NBSP) with normal spaces.  
+- Removed unnecessary trailing spaces in lists.  
+
+That should render cleanly on GitHub.
