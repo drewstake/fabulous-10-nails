@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+Here’s a **`README.md`** you can drop at the root of your repo:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```markdown
+# Fabulous 10 Nails Salon Website
 
-## Available Scripts
+Live Site: [https://www.fabulous10nails.com/](https://www.fabulous10nails.com/)
 
-In the project directory, you can run:
+A modern, responsive salon website built with React, Tailwind CSS, and AWS Amplify, featuring a booking flow, dynamic gallery, and secure user authentication.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Modular React Components**: Header, Hero, Services, Gallery, Testimonials, Booking CTA, Contact, and Footer  
+- **Continuous Testimonials Carousel**: Infinite‑scroll slider with real reviews  
+- **Tailwind CSS**: Utility‑first styling for rapid, consistent design  
+- **AWS Amplify CI/CD**: Auto‑deploys both `main` (production) and `development` (staging) branches  
+- **Auth Flow**: React Router login/signup forms wired to an Express/Mongoose backend with JWT  
+- **MongoDB**: Stores user credentials, secure password hashing via bcrypt  
+- **Responsive**: Mobile‑first design with fixed header and smooth animations  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech Stack
 
-### `npm test`
+- **Frontend**: React, React Router, Tailwind CSS  
+- **Backend**: Node.js, Express, Mongoose (MongoDB), JWT, bcrypt  
+- **Hosting & Deployment**: AWS Amplify  
+- **CI/CD**: Amplify Build & Deploy from GitHub branches  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+### Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js ≥14  
+- npm or yarn  
+- MongoDB URI (for local or Atlas)  
+- AWS account for Amplify (optional)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Local Setup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Clone the repo**  
+   ```bash
+   git clone https://github.com/drewstake/fabulous-10-nails.git
+   cd fabulous-10-nails
+   ```
 
-### `npm run eject`
+2. **Install dependencies**  
+   ```bash
+   # frontend
+   npm install
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   # backend
+   cd server
+   npm install
+   cd ..
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. **Configure environment**  
+   - Copy `server/.env.example` → `server/.env` and fill in your `MONGO_URI`, `JWT_SECRET`, etc.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. **Run in development**  
+   ```bash
+   # start backend on :4000
+   cd server && npm start
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   # in another terminal, start frontend on :3000
+   cd .. && npm start
+   ```
 
-## Learn More
+5. **Build & deploy**  
+   ```bash
+   npm run build        # creates `build/` folder
+   npm run amplify:push # if you have the Amplify CLI configured
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contributing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Create a `development` branch:  
+   ```bash
+   git checkout -b development
+   git push -u origin development
+   ```
+2. Make your changes, commit, and push.  
+3. Open a PR against `main` when ready.
 
-### Code Splitting
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is open‑source under the MIT License.
+```
