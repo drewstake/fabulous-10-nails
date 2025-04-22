@@ -1,5 +1,3 @@
-Here’s a **`README.md`** you can drop at the root of your repo:
-
 ```markdown
 # Fabulous 10 Nails Salon Website
 
