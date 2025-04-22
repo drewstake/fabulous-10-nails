@@ -1,10 +1,3 @@
-It looks like two things are tripping up GitHub’s Markdown renderer:
-
-1. **Non‐breaking spaces** (` `) instead of normal spaces.  
-2. **Trailing double‑spaces** on list lines to force line breaks (you don’t actually need them here).
-
-Here’s a cleaned‑up version—just copy this into your `README.md`, replacing the old content:
-
 ```markdown
 # Fabulous 10 Nails Salon Website
 
@@ -89,9 +82,3 @@ A modern, responsive salon website built with React, Tailwind CSS, and AWS Ampli
 
 This project is open‑source under the MIT License.
 ```
-
-**Key fixes:**
-- Replaced all ` ` (NBSP) with normal spaces.  
-- Removed unnecessary trailing spaces in lists.  
-
-That should render cleanly on GitHub.
