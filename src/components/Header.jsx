@@ -6,7 +6,12 @@ const navLinks = [
   { to: "#services", label: "Services" },
   { to: "#gallery", label: "Gallery" },
   { to: "#contact", label: "Contact" },
-  { to: "https://book.squareup.com/appointments/yvzkpxjnwzqnnb/location/LRZJ8PYM8GKQH", label: "Book Now", primary: true, external: true },
+  {
+    to: "https://book.squareup.com/appointments/yvzkpxjnwzqnnb/location/LRZJ8PYM8GKQH",
+    label: "Book Now",
+    primary: true,
+    external: true
+  },
   { to: "/login", label: "Login" },
 ];
 
@@ -20,7 +25,7 @@ export default function Header() {
         <div className="hidden md:flex space-x-4 items-center">
           {navLinks.map(link => {
             const classes = link.primary
-              ? "bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 shadow-sm transition duration-300"
+              ? "bg-pink-500 text-white text-lg md:text-xl px-6 py-3 rounded-full hover:bg-pink-600 shadow-sm transition duration-300"
               : "text-gray-600 hover:text-pink-600 transition duration-300 px-3 py-1";
             if (link.external) {
               return (
