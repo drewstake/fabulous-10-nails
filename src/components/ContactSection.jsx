@@ -31,7 +31,8 @@ export default function ContactSection() {
             <div className="flex flex-col items-center">
               <Clock className="w-10 h-10 mb-3 text-pink-500" />
               <h4 className="font-semibold mb-1 text-lg">Opening Hours</h4>
-              <p>Mon - Fri: 10 AM – 7 PM</p>
+              <p>Mon - Thurs: 10 AM – 7 PM</p>
+              <p>Fri: 9 AM – 7 PM</p>
               <p>Sat: 9 AM – 6 PM</p>
               <p>Sun: Closed</p>
             </div>

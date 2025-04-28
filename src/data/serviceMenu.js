@@ -4,9 +4,9 @@ export const serviceMenu = [
     items: [
       { name: "Regular Full Set", price: "$40" },
       { name: "Regular Refill", price: "$40" },
-      { name: "Pink & White Full Set", price: "$65" }, // updated from $60 to $65
+      { name: "Pink & White Full Set", price: "$65" },
       { name: "Pink & White Back Fill", price: "$55" },
-      { name: "Pink Fill", price: "$35" },
+      { name: "Pink Fill", price: "$40" },
     ],
   },
   {
@@ -28,29 +28,30 @@ export const serviceMenu = [
     category: "Gel",
     items: [
       { name: "Full set (Gel on top)", price: "$50/up" },
-      { name: "Fill", price: "$37/up" },
+      { name: "Gel Builder Full Set", price: "$60" },
+      { name: "Refill (Gel Color on Top)", price: "$50/up" },
     ],
   },
   {
-    category: "Kid's Menu",
+    category: "Kid's Menu (Under 10)",
     items: [
       { name: "Manicure", price: "$12" },
-      { name: "Pedicure", price: "$20" },
-      { name: "Mani & Pedi Combo", price: "$28" },
-      { name: "Polish Change", price: "$8" },
+      { name: "Pedicure", price: "$22" },
+      { name: "Mani & Pedi Combo", price: "$30" },
+      { name: "Polish Change", price: "$10" },
     ],
   },
   {
     category: "Waxing",
     items: [
-      { name: "Eyebrow", price: "$12" },  // updated from $10 to $12
-      { name: "Chin", price: "$10/up" },
-      { name: "Lip", price: "$7" },        // updated from $6 to $7
-      { name: "Under Arms", price: "$20" },
-      { name: "Half Arms", price: "$20" },
-      { name: "Full Arms", price: "$30" },
-      { name: "Bikini", price: "$30" },
-      { name: "Brazilian Bikini", price: "$50" },
+      { name: "Eyebrow", price: "$12" },
+      { name: "Chin", price: "$12" },
+      { name: "Lip", price: "$7" },
+      { name: "Under Arms", price: "$25" },
+      { name: "Half Arms", price: "$30" },
+      { name: "Full Arms", price: "$50" },
+      { name: "Bikini", price: "$35" },
+      { name: "Brazilian Bikini", price: "$60" },
     ],
   },
   {
@@ -59,10 +60,10 @@ export const serviceMenu = [
       { name: "Polish Change", price: "$10" },
       { name: "French Polish Change", price: "$15" },
       { name: "Toe Polish Change", price: "$15" },
-      { name: "Broken Nail Fix", price: "$3" },
-      { name: "Nail Designs", price: "$3/up" },
+      { name: "Broken Nail Fix", price: "$6" },
+      { name: "Nail Designs", price: "$4/up" },
       { name: "Paraffin for Hands/Feet", price: "$10" },
-      { name: "Cut Down", price: "$3" },
+      { name: "Cut Down", price: "$5/up" }, // updated from $3 to $5/up
     ],
   },
 ];
