@@ -2,8 +2,8 @@ export const serviceMenu = [
   {
     category: "Acrylics",
     items: [
-      { name: "Regular Full Set", price: "$40" },
-      { name: "Regular Refill", price: "$40" },
+      { name: "Regular Full Set", price: "$40/up" }, // updated
+      { name: "Regular Refill", price: "$35/up" },    // updated
       { name: "Pink & White Full Set", price: "$65" },
       { name: "Pink & White Back Fill", price: "$55" },
       { name: "Pink Fill", price: "$40" },
@@ -63,7 +63,7 @@ export const serviceMenu = [
       { name: "Broken Nail Fix", price: "$6" },
       { name: "Nail Designs", price: "$4/up" },
       { name: "Paraffin for Hands/Feet", price: "$10" },
-      { name: "Cut Down", price: "$5/up" }, // updated from $3 to $5/up
+      { name: "Cut Down", price: "$5/up" },
     ],
   },
 ];
