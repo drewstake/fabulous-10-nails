@@ -1,3 +1,5 @@
+// src/App.js
+
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
@@ -13,7 +15,7 @@ import SignupPage from './components/SignupPage';
 
 function App() {
   return (
-    <div className="min-h-screen bg-pink-50 font-sans text-gray-800 overflow-x-hidden">
+    <div className="scroll-smooth min-h-screen bg-pink-50 font-sans text-gray-800 overflow-x-hidden">
       <Header />
       <main className="pt-16">
         <Routes>
