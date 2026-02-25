@@ -1,29 +1,37 @@
 import React from 'react';
-
-const bookingUrl =
-  "https://book.squareup.com/appointments/yvzkpxjnwzqnnb/location/LRZJ8PYM8GKQH";
+import { businessInfo } from '../data/businessInfo';
 
 export default function BookingSection() {
   return (
-    <section
-      id="book"
-      className="py-20 bg-gradient-to-r from-pink-500 to-purple-500 text-white text-center"
-    >
-      <div className="container mx-auto px-6">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">
-          Ready for Beautiful Nails?
-        </h2>
-        <p className="text-lg mb-8 max-w-xl mx-auto">
-          Schedule your appointment today and let us pamper you.
-        </p>
-        <a
-          href={bookingUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-white text-pink-600 text-xl md:text-2xl px-10 py-4 rounded-full hover:bg-gray-100 transition duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
-        >
-          Book Online Now
-        </a>
+    <section className="page-section">
+      <div className="section-wrap">
+        <div className="rounded-3xl border border-rose-200 bg-gradient-to-br from-rose-100 to-amber-50 p-8 text-center md:p-12">
+          <h2 className="text-2xl font-extrabold md:text-3xl">Ready for Your Next Appointment?</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm text-slate-700 md:text-base">
+            Book online in seconds, call us directly, or open directions and visit today.
+          </p>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            <a
+              className="btn-primary"
+              href={businessInfo.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Book Online
+            </a>
+            <a className="btn-secondary" href={businessInfo.phoneHref}>
+              Call {businessInfo.phoneDisplay}
+            </a>
+            <a
+              className="btn-secondary"
+              href={businessInfo.directionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Get Directions
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

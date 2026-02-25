@@ -3,17 +3,14 @@ import { Star } from 'lucide-react';
 
 export default function TestimonialCard({ quote, author, rating }) {
   return (
-    <div className="testimonialCard bg-pink-50 p-6 rounded-lg shadow-sm text-center">
-      <div className="flex justify-center mb-3">
-        {[...Array(rating)].map((_, i) => (
-          <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-        ))}
-        {[...Array(5 - rating)].map((_, i) => (
-          <Star key={`empty-${i}`} className="w-5 h-5 text-gray-300" />
+    <article className="h-full rounded-2xl border border-rose-100 bg-white p-6 shadow-sm">
+      <div className="mb-3 flex">
+        {[...Array(rating)].map((_, index) => (
+          <Star key={`${author}-${index}`} className="h-4 w-4 fill-amber-400 text-amber-400" />
         ))}
       </div>
-      <p className="testimonialQuote text-gray-700 italic mb-4">"{quote}"</p>
-      <p className="testimonialAuthor font-semibold text-pink-700">- {author}</p>
-    </div>
+      <p className="text-sm leading-relaxed text-slate-700 md:text-base">"{quote}"</p>
+      <p className="mt-4 text-sm font-semibold text-slate-900">- {author}</p>
+    </article>
   );
 }

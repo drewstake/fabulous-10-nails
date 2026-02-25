@@ -1,42 +1,34 @@
 // src/App.js
 
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
-import HeroSection from './components/HeroSection';
-import ServicesSection from './components/ServicesSection';
-import GallerySection from './components/GallerySection';
-import TestimonialsSection from './components/TestimonialsSection';
-import BookingSection from './components/BookingSection';
-import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import LoginPage from './components/LoginPage';
 import SignupPage from './components/SignupPage';
+import MobileActionBar from './components/MobileActionBar';
+import HomePage from './pages/HomePage';
+import ServicesPage from './pages/ServicesPage';
+import GalleryPage from './pages/GalleryPage';
+import ContactPage from './pages/ContactPage';
 
 function App() {
   return (
-    <div className="scroll-smooth min-h-screen bg-pink-50 font-sans text-gray-800 overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden bg-rose-50 text-slate-800">
       <Header />
-      <main className="pt-16">
+      <main className="pb-24 pt-16 md:pb-0">
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <HeroSection />
-                <ServicesSection />
-                <GallerySection />
-                <TestimonialsSection />
-                <BookingSection />
-                <ContactSection />
-              </>
-            }
-          />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
       <Footer />
+      <MobileActionBar />
     </div>
   );
 }
