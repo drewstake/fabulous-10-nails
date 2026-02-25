@@ -4,7 +4,7 @@ const fallbackImage = '/images/interior.png';
 
 export default function GalleryImage({ src, alt }) {
   return (
-    <figure className="group overflow-hidden rounded-2xl border border-rose-100 bg-white shadow-sm">
+    <figure className="gallery-card group overflow-hidden rounded-2xl border border-rose-100 bg-white shadow-sm">
       <img
         src={src}
         alt={alt}

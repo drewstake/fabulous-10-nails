@@ -10,6 +10,10 @@ export default function HeroSection() {
           src="/images/front.png"
           alt="Fabulous 10 Nails storefront in Pennsburg, Pennsylvania"
           className="h-full w-full object-cover object-center opacity-60"
+          width="4096"
+          height="2694"
+          sizes="100vw"
+          decoding="async"
           fetchPriority="high"
         />
       </div>

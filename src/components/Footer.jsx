@@ -4,7 +4,7 @@ import DirectionsButton from './DirectionsButton';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-rose-100 bg-white py-10">
+    <footer className="site-footer border-t border-rose-100 bg-white py-10">
       <div className="section-wrap">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           <div>

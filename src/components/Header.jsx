@@ -27,7 +27,7 @@ export default function Header() {
   }, [location.pathname]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-rose-100 bg-white/95 md:backdrop-blur">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-rose-100 bg-white/95 [transform:translateZ(0)] [will-change:transform] md:backdrop-blur">
       <div className="section-wrap flex h-16 items-center justify-between">
         <Link className="text-lg font-extrabold tracking-tight text-slate-900 sm:text-xl" to="/">
           Fabulous 10 Nails
