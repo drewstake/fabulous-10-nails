@@ -11,8 +11,10 @@ export default function DirectionsButton({
   label = 'Get Directions',
   containerClassName = '',
   menuAlign = 'left',
+  menuPlacement = 'auto',
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [resolvedPlacement, setResolvedPlacement] = useState('down');
   const wrapperRef = useRef(null);
   const menuId = useId();
 
@@ -42,8 +44,32 @@ export default function DirectionsButton({
     };
   }, []);
 
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    if (menuPlacement === 'up' || menuPlacement === 'down') {
+      setResolvedPlacement(menuPlacement);
+      return;
+    }
+
+    if (!wrapperRef.current) {
+      setResolvedPlacement('down');
+      return;
+    }
+
+    const rect = wrapperRef.current.getBoundingClientRect();
+    const estimatedMenuHeight = 112;
+    const mobileBarAllowance = 96;
+    const availableBelow = window.innerHeight - rect.bottom - mobileBarAllowance;
+
+    setResolvedPlacement(availableBelow < estimatedMenuHeight ? 'up' : 'down');
+  }, [isOpen, menuPlacement]);
+
   const menuAlignmentClass =
     menuAlign === 'right' ? 'right-0' : menuAlign === 'center' ? 'left-1/2 -translate-x-1/2' : 'left-0';
+  const menuPlacementClass = resolvedPlacement === 'up' ? 'bottom-full mb-2' : 'top-full mt-2';
 
   return (
     <div className={`relative inline-flex ${containerClassName}`.trim()} ref={wrapperRef}>
@@ -60,7 +86,7 @@ export default function DirectionsButton({
 
       {isOpen ? (
         <div
-          className={`absolute ${menuAlignmentClass} top-full z-50 mt-2 min-w-[190px] rounded-xl border border-rose-100 bg-white p-1.5 shadow-lg`}
+          className={`absolute ${menuAlignmentClass} ${menuPlacementClass} z-[70] min-w-[190px] rounded-xl border border-rose-100 bg-white p-1.5 shadow-lg`}
           id={menuId}
           role="menu"
         >

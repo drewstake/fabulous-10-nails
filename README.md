@@ -149,7 +149,6 @@ fabulous-10-nails/
 - Pricing note for `/up`
 
 - `/gallery` Gallery:
-- Filter chips (`All`, `Acrylic`, `Dip`, `Gel`, `Nail Art`)
 - Lazy-loaded optimized gallery image cards
 
 - `/contact` Contact:
