@@ -19,6 +19,10 @@ export default function DirectionsButton({
   const menuId = useId();
 
   useEffect(() => {
+    if (!isOpen) {
+      return undefined;
+    }
+
     function handlePointerDown(event) {
       if (!wrapperRef.current || wrapperRef.current.contains(event.target)) {
         return;
@@ -33,16 +37,14 @@ export default function DirectionsButton({
       }
     }
 
-    document.addEventListener('mousedown', handlePointerDown);
-    document.addEventListener('touchstart', handlePointerDown);
+    document.addEventListener('pointerdown', handlePointerDown, { passive: true });
     document.addEventListener('keydown', handleEscapeKey);
 
     return () => {
-      document.removeEventListener('mousedown', handlePointerDown);
-      document.removeEventListener('touchstart', handlePointerDown);
+      document.removeEventListener('pointerdown', handlePointerDown);
       document.removeEventListener('keydown', handleEscapeKey);
     };
-  }, []);
+  }, [isOpen]);
 
   useEffect(() => {
     if (!isOpen) {
