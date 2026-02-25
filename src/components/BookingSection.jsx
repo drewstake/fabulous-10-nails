@@ -1,5 +1,6 @@
 import React from 'react';
 import { businessInfo } from '../data/businessInfo';
+import DirectionsButton from './DirectionsButton';
 
 export default function BookingSection() {
   return (
@@ -22,14 +23,9 @@ export default function BookingSection() {
             <a className="btn-secondary" href={businessInfo.phoneHref}>
               Call {businessInfo.phoneDisplay}
             </a>
-            <a
+            <DirectionsButton
               className="btn-secondary"
-              href={businessInfo.directionsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Get Directions
-            </a>
+            />
           </div>
         </div>
       </div>

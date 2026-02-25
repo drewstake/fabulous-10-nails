@@ -1,5 +1,6 @@
 import React from 'react';
 import { businessInfo } from '../data/businessInfo';
+import DirectionsButton from './DirectionsButton';
 
 export default function Footer() {
   return (
@@ -36,14 +37,9 @@ export default function Footer() {
               Serving Pennsburg, Red Hill, Green Lane, East Greenville, Pottstown.
             </p>
             <div className="mt-4 flex gap-2">
-              <a
+              <DirectionsButton
                 className="btn-secondary text-sm"
-                href={businessInfo.directionsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Get Directions
-              </a>
+              />
               <a
                 className="btn-primary text-sm"
                 href={businessInfo.bookingUrl}

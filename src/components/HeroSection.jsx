@@ -1,5 +1,6 @@
 import React from 'react';
 import { businessInfo } from '../data/businessInfo';
+import DirectionsButton from './DirectionsButton';
 
 export default function HeroSection() {
   return (
@@ -38,14 +39,9 @@ export default function HeroSection() {
             <a className="btn-secondary bg-white/95 text-slate-800 hover:bg-white" href={businessInfo.phoneHref}>
               Call {businessInfo.phoneDisplay}
             </a>
-            <a
+            <DirectionsButton
               className="btn-secondary border-white/70 bg-transparent text-white hover:bg-white/10"
-              href={businessInfo.directionsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Get Directions
-            </a>
+            />
           </div>
 
           <p className="mt-8 max-w-2xl text-sm text-slate-200">{businessInfo.servingLine}</p>

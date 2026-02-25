@@ -179,7 +179,9 @@ Fields to update:
 - `phoneHref`
 - `phoneRaw`
 - `bookingUrl`
-- `directionsUrl`
+- `googleMapsUrl`
+- `appleMapsUrl`
+- `directionsUrl` (legacy Google Maps fallback)
 - `mapEmbedUrl`
 - `hours`
 - `servingLine`
@@ -404,7 +406,8 @@ Before and after campaigns, test:
 
 3. Directions click path:
 - Click directions CTAs
-- Confirm map opens for `436 Pottstown Ave., Pennsburg, PA 18073`
+- Confirm the map menu shows both `Google Maps` and `Apple Maps`
+- Confirm either option opens `436 Pottstown Ave., Pennsburg, PA 18073`
 
 4. Analytics sanity:
 - Google tag exists in `public/index.html`

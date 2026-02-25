@@ -1,6 +1,7 @@
 import React from 'react';
 import { Clock3, MapPin, Phone } from 'lucide-react';
 import { businessInfo } from '../data/businessInfo';
+import DirectionsButton from './DirectionsButton';
 
 export default function ContactSection() {
   return (
@@ -25,14 +26,9 @@ export default function ContactSection() {
               <br />
               {businessInfo.cityStateZip}
             </p>
-            <a
+            <DirectionsButton
               className="mt-4 inline-flex text-sm font-semibold text-rose-700 hover:text-rose-800"
-              href={businessInfo.directionsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Get Directions
-            </a>
+            />
           </article>
 
           <article className="rounded-2xl border border-rose-100 bg-rose-50 p-6">

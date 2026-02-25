@@ -1,5 +1,6 @@
 import React from 'react';
 import { businessInfo } from '../data/businessInfo';
+import DirectionsButton from './DirectionsButton';
 
 export default function MobileActionBar() {
   return (
@@ -19,14 +20,12 @@ export default function MobileActionBar() {
         >
           Book
         </a>
-        <a
-          className="btn-secondary text-center text-sm"
-          href={businessInfo.directionsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Directions
-        </a>
+        <DirectionsButton
+          className="btn-secondary w-full text-center text-sm"
+          containerClassName="w-full"
+          label="Directions"
+          menuAlign="right"
+        />
       </div>
     </div>
   );
