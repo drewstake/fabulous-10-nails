@@ -3,8 +3,7 @@ import TestimonialCard from './TestimonialCard';
 import { testimonials } from '../data/testimonials';
 
 const reviewsLink = 'https://www.google.com/search?q=Fabulous+10+Nails+Pennsburg+PA+reviews';
-const leaveReviewLink =
-  'https://www.google.com/search?q=Fabulous+10+Nails+Pennsburg+PA&hl=en#lrd=0x89c41a0a9a5a67d7:0x5b8a0d9a9a9a9a9a,3';
+const leaveReviewLink = 'https://g.page/r/Ce0XwiBU_eTcEAE/review';
 
 export default function TestimonialsSection() {
   return (
