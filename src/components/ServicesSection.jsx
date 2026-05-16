@@ -111,6 +111,7 @@ export default function ServicesSection() {
             <div className="my-5 flex items-center gap-4 text-brand-berry">
               <span className="h-px w-16 bg-brand-berry" />
               <Heart className="h-5 w-5" />
+              <span className="h-px w-16 bg-brand-berry" />
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
               <a

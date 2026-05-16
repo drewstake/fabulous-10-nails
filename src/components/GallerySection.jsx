@@ -90,8 +90,8 @@ export default function GallerySection() {
             </h1>
             <div className="mt-6 flex items-center gap-4 text-brand-berry">
               <span className="h-px w-16 bg-brand-berry" />
-              <span className="h-px w-16 bg-brand-berry" />
               <Heart className="h-4 w-4" />
+              <span className="h-px w-16 bg-brand-berry" />
             </div>
             <a
               className="btn-primary mt-7 normal-case tracking-normal"
