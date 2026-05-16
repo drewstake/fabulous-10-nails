@@ -1,6 +1,5 @@
 import React from 'react';
 import GallerySection from '../components/GallerySection';
-import BookingSection from '../components/BookingSection';
 import PageMeta from '../components/PageMeta';
 
 export default function GalleryPage() {
@@ -11,7 +10,6 @@ export default function GalleryPage() {
         description="Browse acrylic, dip, gel, and nail art work from Fabulous 10 Nails in Pennsburg, PA."
       />
       <GallerySection />
-      <BookingSection />
     </>
   );
 }

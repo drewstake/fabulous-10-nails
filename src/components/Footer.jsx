@@ -1,27 +1,81 @@
 import React from 'react';
+import { CalendarCheck, MapPin, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { businessInfo } from '../data/businessInfo';
-import DirectionsButton from './DirectionsButton';
 
 export default function Footer() {
   return (
-    <footer className="site-footer border-t border-rose-100 bg-white py-10">
+    <footer className="border-t border-brand-nude/70 bg-white pt-8">
       <div className="section-wrap">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-7 md:grid-cols-[1.2fr_0.8fr_1fr_1fr]">
           <div>
-            <h2 className="text-lg font-bold text-slate-900">{businessInfo.name}</h2>
-            <p className="mt-2 text-sm text-slate-700">
-              {businessInfo.street}
-              <br />
-              {businessInfo.cityStateZip}
+            <div className="mb-3">
+              <span className="logo-script block text-4xl leading-none text-[#6ea348]">
+                Fabulous 10
+              </span>
+              <span className="mt-0.5 flex max-w-[11rem] items-center gap-2 text-[0.62rem] font-bold uppercase tracking-[0.22em] text-brand-berry">
+                <span className="h-px flex-1 bg-brand-berry/60" />
+                Nails & Spa
+                <span className="h-px flex-1 bg-brand-berry/60" />
+              </span>
+            </div>
+            <p className="mt-2 text-sm leading-6 text-brand-charcoal/70">
+              Luxury nail care in Pennsburg, PA. Clean, soft, friendly techs, and beautiful results every time.
             </p>
-            <a className="mt-2 inline-block text-sm font-semibold text-rose-700" href={businessInfo.phoneHref}>
-              {businessInfo.phoneDisplay}
-            </a>
           </div>
 
           <div>
-            <h2 className="text-lg font-bold text-slate-900">Hours</h2>
-            <ul className="mt-2 space-y-1 text-sm text-slate-700">
+            <h2 className="text-lg">Quick Links</h2>
+            <ul className="mt-3 space-y-1 text-sm text-brand-charcoal/70">
+              {[
+                ['Home', '/'],
+                ['Services', '/services'],
+                ['Gallery', '/gallery'],
+                ['Contact', '/contact'],
+              ].map(([label, to]) => (
+                <li key={to}>
+                  <Link className="hover:text-brand-berry" to={to}>
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="text-lg">Contact Us</h2>
+            <ul className="mt-3 space-y-2 text-sm text-brand-charcoal/70">
+              <li className="flex gap-2">
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand-berry" />
+                <a className="hover:text-brand-berry" href={businessInfo.phoneHref}>
+                  {businessInfo.phoneDisplay}
+                </a>
+              </li>
+              <li className="flex gap-2">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-berry" />
+                <span>
+                  {businessInfo.street}
+                  <br />
+                  {businessInfo.cityStateZip}
+                </span>
+              </li>
+              <li className="flex gap-2">
+                <CalendarCheck className="mt-0.5 h-4 w-4 shrink-0 text-brand-berry" />
+                <a
+                  className="hover:text-brand-berry"
+                  href={businessInfo.bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Book an appointment
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="text-lg">Hours</h2>
+            <ul className="mt-3 space-y-1 text-sm text-brand-charcoal/70">
               {businessInfo.hours.map((hour) => (
                 <li key={hour.label} className="flex justify-between gap-3">
                   <span>{hour.label}</span>
@@ -30,30 +84,10 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-
-          <div>
-            <h2 className="text-lg font-bold text-slate-900">Serving Nearby Towns</h2>
-            <p className="mt-2 text-sm text-slate-700">
-              Serving Pennsburg, Red Hill, Green Lane, East Greenville, Pottstown.
-            </p>
-            <div className="mt-4 flex gap-2">
-              <DirectionsButton
-                className="btn-secondary text-sm"
-              />
-              <a
-                className="btn-primary text-sm"
-                href={businessInfo.bookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Book Now
-              </a>
-            </div>
-          </div>
         </div>
 
-        <p className="mt-8 border-t border-rose-100 pt-6 text-sm text-slate-500">
-          © {new Date().getFullYear()} {businessInfo.name}. All rights reserved.
+        <p className="mt-8 border-t border-brand-nude/70 py-4 text-center text-xs text-brand-charcoal/50">
+          &copy; {new Date().getFullYear()} {businessInfo.name}. All rights reserved.
         </p>
       </div>
     </footer>

@@ -1,32 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Sparkles } from 'lucide-react';
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-pink-50 px-6">
-      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow">
-        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+    <div className="flex min-h-screen items-center justify-center bg-brand-ivory px-5 py-16">
+      <div className="surface-card w-full max-w-md p-8">
+        <div className="mb-7 text-center">
+          <span className="icon-bubble mx-auto mb-4">
+            <Sparkles className="h-5 w-5" />
+          </span>
+          <p className="eyebrow mb-2">Welcome Back</p>
+          <h1 className="text-4xl">Login</h1>
+        </div>
         <form className="space-y-4">
-          <input
-            type="email"
-            placeholder="Email"
-            className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-pink-500"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-pink-500"
-          />
-          <button
-            type="submit"
-            className="w-full bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700 transition"
-          >
+          <input type="email" placeholder="Email" className="field-input" />
+          <input type="password" placeholder="Password" className="field-input" />
+          <button type="submit" className="btn-primary w-full">
             Login
           </button>
         </form>
-        <p className="mt-4 text-center text-gray-600">
-          Don’t have an account?{' '}
-          <Link to="/signup" className="text-pink-600 hover:underline">
+        <p className="mt-5 text-center text-sm text-brand-charcoal/65">
+          Do not have an account?{' '}
+          <Link to="/signup" className="font-semibold text-brand-berry hover:underline">
             Sign up
           </Link>
         </p>

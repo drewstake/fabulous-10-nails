@@ -1,7 +1,7 @@
 // src/App.js
 
-import React, { Suspense, lazy } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import React, { Suspense, lazy, useEffect } from 'react';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import MobileActionBar from './components/MobileActionBar';
@@ -13,11 +13,24 @@ const ContactPage = lazy(() => import('./pages/ContactPage'));
 const LoginPage = lazy(() => import('./components/LoginPage'));
 const SignupPage = lazy(() => import('./components/SignupPage'));
 
+function ScrollToTop() {
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    if (!hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    }
+  }, [pathname, hash]);
+
+  return null;
+}
+
 function App() {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-rose-50 text-slate-800">
+    <div className="min-h-screen overflow-x-hidden bg-brand-ivory text-brand-charcoal">
+      <ScrollToTop />
       <Header />
-      <main className="pb-24 pt-16 md:pb-0">
+      <main className="pb-24 pt-16 xl:pb-0">
         <Suspense fallback={<div className="section-wrap py-8" />}>
           <Routes>
             <Route path="/" element={<HomePage />} />

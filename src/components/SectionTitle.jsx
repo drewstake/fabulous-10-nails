@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SectionTitle = ({ children }) => (
-  <h2 className="text-3xl md:text-4xl font-bold text-center text-pink-800 mb-12">
+  <h2 className="mb-12 text-center text-3xl md:text-4xl">
     {children}
   </h2>
 );

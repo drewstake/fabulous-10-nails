@@ -1,37 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Sparkles } from 'lucide-react';
 
 export default function SignupPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-pink-50 px-6">
-      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow">
-        <h2 className="text-2xl font-bold mb-6 text-center">Sign Up</h2>
+    <div className="flex min-h-screen items-center justify-center bg-brand-ivory px-5 py-16">
+      <div className="surface-card w-full max-w-md p-8">
+        <div className="mb-7 text-center">
+          <span className="icon-bubble mx-auto mb-4">
+            <Sparkles className="h-5 w-5" />
+          </span>
+          <p className="eyebrow mb-2">Client Access</p>
+          <h1 className="text-4xl">Sign Up</h1>
+        </div>
         <form className="space-y-4">
-          <input
-            type="text"
-            placeholder="Name"
-            className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-pink-500"
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-pink-500"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-pink-500"
-          />
-          <button
-            type="submit"
-            className="w-full bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700 transition"
-          >
+          <input type="text" placeholder="Name" className="field-input" />
+          <input type="email" placeholder="Email" className="field-input" />
+          <input type="password" placeholder="Password" className="field-input" />
+          <button type="submit" className="btn-primary w-full">
             Sign Up
           </button>
         </form>
-        <p className="mt-4 text-center text-gray-600">
+        <p className="mt-5 text-center text-sm text-brand-charcoal/65">
           Already have an account?{' '}
-          <Link to="/login" className="text-pink-600 hover:underline">
+          <Link to="/login" className="font-semibold text-brand-berry hover:underline">
             Log in
           </Link>
         </p>

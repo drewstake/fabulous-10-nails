@@ -1,6 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 import { popularServices } from '../data/businessInfo';
+
+const serviceDetails = [
+  {
+    image: '/images/nail1.png',
+    description: 'Long-lasting shine with chip-resistant gel polish.',
+  },
+  {
+    image: '/images/nail6.png',
+    description: 'Relaxing soak, exfoliation, massage, and polish.',
+  },
+  {
+    image: '/images/nail4.png',
+    description: 'The ultimate pedicure experience with extra care.',
+  },
+  {
+    image: '/images/nail7.png',
+    description: 'Strong, lightweight, and natural-looking nails.',
+  },
+  {
+    image: '/images/nail9.png',
+    description: 'Durable extensions shaped and customized for you.',
+  },
+];
 
 export default function PopularServicesSection({
   compact = false,
@@ -11,30 +35,44 @@ export default function PopularServicesSection({
   const contentClasses = includeContainer ? 'section-wrap' : '';
 
   return (
-    <WrapperTag className={compact ? 'page-section pt-0' : 'page-section'}>
+    <WrapperTag className={compact ? 'page-section bg-white pt-8' : 'page-section bg-white'}>
       <div className={contentClasses}>
-        <div className="mb-8 flex items-end justify-between gap-4">
+        <div className="mb-8 text-center">
           <div>
-            <p className="mb-2 text-sm font-semibold uppercase tracking-[0.12em] text-rose-500">
-              Most Popular
-            </p>
-            <h2 className="text-2xl font-extrabold md:text-3xl">Most-Booked Services</h2>
+            <p className="eyebrow">Our Signature Treatments</p>
+            <h2 className="text-3xl md:text-4xl">Most-Booked Services</h2>
           </div>
-          <Link className="btn-ghost hidden sm:inline-flex" to="/services">
-            View Full Menu
-          </Link>
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {popularServices.map((service) => (
+          {popularServices.map((service, index) => (
             <article
               key={service.name}
-              className="rounded-2xl border border-rose-100 bg-white p-5 shadow-sm"
+              className="surface-card relative overflow-hidden p-3 text-center transition hover:-translate-y-1 hover:border-brand-berry/35"
             >
-              <h3 className="mb-2 text-base font-semibold text-slate-900">{service.name}</h3>
-              <p className="text-lg font-bold text-rose-600">{service.price}</p>
+              <img
+                src={serviceDetails[index].image}
+                alt={`${service.name} example at Fabulous 10 Nails`}
+                className="aspect-[1.85/1] w-full rounded-md object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="px-2 pb-2 pt-4">
+                <h3 className="text-xl leading-tight">{service.name}</h3>
+                <p className="mt-1 text-sm font-bold text-brand-berry">from {service.price.replace('/up', '')}</p>
+                <p className="mt-2 text-sm leading-6 text-brand-charcoal/68">
+                  {serviceDetails[index].description}
+                </p>
+              </div>
             </article>
           ))}
+        </div>
+
+        <div className="mt-7 text-center">
+          <Link className="btn-primary" to="/services">
+            View All Services
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </div>
     </WrapperTag>
