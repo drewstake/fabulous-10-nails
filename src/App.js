@@ -25,13 +25,28 @@ function ScrollToTop() {
   return null;
 }
 
+function PageLoading() {
+  return (
+    <div
+      className="section-wrap flex min-h-[24rem] items-center justify-center py-16 text-center"
+      role="status"
+      aria-live="polite"
+    >
+      <div>
+        <div className="mx-auto mb-5 h-10 w-10 animate-spin rounded-full border-4 border-brand-nude border-t-brand-berry" />
+        <p className="font-semibold text-brand-charcoal">Loading page...</p>
+      </div>
+    </div>
+  );
+}
+
 function App() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-brand-ivory text-brand-charcoal">
       <ScrollToTop />
       <Header />
       <main className="pb-24 pt-16 xl:pb-0">
-        <Suspense fallback={<div className="section-wrap py-8" />}>
+        <Suspense fallback={<PageLoading />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/services" element={<ServicesPage />} />

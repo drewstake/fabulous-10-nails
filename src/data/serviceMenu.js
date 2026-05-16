@@ -28,7 +28,7 @@ export const serviceMenu = [
     category: "Gel",
     items: [
       { name: "Full set (Gel on top)", price: "$50/up" },
-      { name: "Gel Builder Full Set", price: "$60" },
+      { name: "Gel Builder Full Set", price: "$60/up" },
       { name: "Refill (Gel Color on Top)", price: "$50/up" },
     ],
   },

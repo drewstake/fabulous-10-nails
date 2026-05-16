@@ -287,7 +287,7 @@ Keep these prices aligned with `src/data/serviceMenu.js`.
 ### Gel
 
 - Full set (Gel on top): `$50/up`
-- Gel Builder Full Set: `$60`
+- Gel Builder Full Set: `$60/up`
 - Refill (Gel Color on Top): `$50/up`
 
 ### Kid's Menu (Under 10)
