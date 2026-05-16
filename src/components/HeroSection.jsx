@@ -25,19 +25,19 @@ export default function HeroSection() {
       <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-brand-ivory to-transparent" />
 
       <div className="section-wrap relative flex min-h-[34rem] items-center py-12 md:min-h-[38rem] lg:min-h-[42rem]">
-        <div className="max-w-[34rem]">
+        <div className="flex max-w-[34rem] flex-col">
           <p className="mb-5 hidden items-center gap-3 font-script text-2xl text-brand-charcoal/82 sm:flex md:text-3xl">
             Pamper Yourself
             <Heart className="h-5 w-5 fill-brand-rose text-brand-rose" />
           </p>
-          <h1 className="font-display text-[2.125rem] font-semibold leading-[1.07] text-brand-charcoal sm:text-5xl sm:leading-[1.05] lg:text-6xl xl:text-7xl xl:leading-[1.03]">
+          <h1 className="order-2 mt-6 font-display text-[2.125rem] font-semibold leading-[1.07] text-brand-charcoal sm:order-none sm:mt-0 sm:text-5xl sm:leading-[1.05] lg:text-6xl xl:text-7xl xl:leading-[1.03]">
             Luxury nail care
             <br />
             <span className="whitespace-nowrap">
               in <span className="italic text-brand-berry">Pennsburg, PA</span>
             </span>
           </h1>
-          <div className="mt-8 grid w-full grid-cols-1 gap-3 sm:flex sm:max-w-none sm:flex-wrap">
+          <div className="order-1 mt-[12.5rem] grid w-full grid-cols-1 gap-3 sm:order-none sm:mt-8 sm:flex sm:max-w-none sm:flex-wrap">
             <a
               className="btn-primary w-full sm:w-auto"
               href={businessInfo.bookingUrl}
@@ -54,7 +54,7 @@ export default function HeroSection() {
           </div>
 
           <a
-            className="mt-6 inline-flex max-w-full items-center gap-3 text-sm font-semibold text-brand-charcoal/72 transition hover:text-brand-berry"
+            className="order-3 mt-6 inline-flex max-w-full items-center gap-3 text-sm font-semibold text-brand-charcoal/72 transition hover:text-brand-berry sm:order-none"
             href={businessInfo.directionsUrl}
             target="_blank"
             rel="noopener noreferrer"
