@@ -112,19 +112,19 @@ export default function ContactSection() {
           </article>
         </div>
 
-        <a
-          className="mt-8 block overflow-hidden rounded-2xl border border-brand-nude/70 bg-white shadow-soft"
-          href={businessInfo.directionsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open directions to Fabulous 10 Nails"
+        <DirectionsButton
+          ariaLabel="Choose directions app for Fabulous 10 Nails"
+          className="block w-full overflow-hidden rounded-2xl border border-brand-nude/70 bg-white p-0 text-left shadow-soft transition hover:border-brand-berry/35"
+          containerClassName="mt-8 block w-full"
+          menuAlign="center"
+          menuPlacement="center"
         >
           <img
             src="/images/contact-map.png"
             alt="Map showing Fabulous 10 Nails in Pennsburg, Pennsylvania"
             className="h-[26rem] w-full object-cover md:h-[28.5rem]"
           />
-        </a>
+        </DirectionsButton>
 
         <div className="mt-8 overflow-hidden rounded-2xl border border-brand-nude/70 bg-gradient-to-r from-brand-blush/70 via-white to-brand-blush/70 p-6 shadow-soft md:p-8">
           <div className="grid items-center gap-6 md:grid-cols-[10rem_1fr_auto]">

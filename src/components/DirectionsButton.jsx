@@ -9,6 +9,8 @@ const directionOptions = [
 export default function DirectionsButton({
   className = 'btn-secondary',
   label = 'Get Directions',
+  ariaLabel,
+  children,
   containerClassName = '',
   menuAlign = 'left',
   menuPlacement = 'auto',
@@ -51,7 +53,7 @@ export default function DirectionsButton({
       return;
     }
 
-    if (menuPlacement === 'up' || menuPlacement === 'down') {
+    if (menuPlacement === 'up' || menuPlacement === 'down' || menuPlacement === 'center') {
       setResolvedPlacement(menuPlacement);
       return;
     }
@@ -71,7 +73,12 @@ export default function DirectionsButton({
 
   const menuAlignmentClass =
     menuAlign === 'right' ? 'right-0' : menuAlign === 'center' ? 'left-1/2 -translate-x-1/2' : 'left-0';
-  const menuPlacementClass = resolvedPlacement === 'up' ? 'bottom-full mb-2' : 'top-full mt-2';
+  const menuPlacementClass =
+    resolvedPlacement === 'center'
+      ? 'top-1/2 -translate-y-1/2'
+      : resolvedPlacement === 'up'
+        ? 'bottom-full mb-2'
+        : 'top-full mt-2';
 
   return (
     <div className={`relative inline-flex ${containerClassName}`.trim()} ref={wrapperRef}>
@@ -79,11 +86,12 @@ export default function DirectionsButton({
         aria-controls={menuId}
         aria-expanded={isOpen}
         aria-haspopup="menu"
+        aria-label={ariaLabel}
         className={`${className} focus:outline-none focus:ring-2 focus:ring-rose-200`}
         type="button"
         onClick={() => setIsOpen((current) => !current)}
       >
-        {label}
+        {children || label}
       </button>
 
       {isOpen ? (
