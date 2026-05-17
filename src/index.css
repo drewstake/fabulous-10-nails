@@ -68,6 +68,47 @@
     width: 0.95rem;
     transform: rotate(-36deg);
   }
+
+  .lightbox-image-slide-up {
+    animation: lightbox-slide-up 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: opacity, transform;
+  }
+
+  .lightbox-image-slide-down {
+    animation: lightbox-slide-down 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: opacity, transform;
+  }
+}
+
+@keyframes lightbox-slide-up {
+  from {
+    opacity: 0.25;
+    transform: translateY(2.4rem) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes lightbox-slide-down {
+  from {
+    opacity: 0.25;
+    transform: translateY(-2.4rem) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-image-slide-up,
+  .lightbox-image-slide-down {
+    animation: none;
+  }
 }
 
 @supports (content-visibility: auto) {

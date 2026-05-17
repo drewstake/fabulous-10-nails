@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   CalendarCheck,
   ChevronLeft,
@@ -23,10 +23,13 @@ const galleryBenefits = [
 
 export default function GallerySection() {
   const [activeIndex, setActiveIndex] = useState(null);
+  const [lightboxDirection, setLightboxDirection] = useState('next');
+  const lightboxTouchStart = useRef(null);
   const activeImage = activeIndex === null ? null : galleryImages[activeIndex];
 
   const closeLightbox = useCallback(() => setActiveIndex(null), []);
   const showPreviousImage = useCallback(() => {
+    setLightboxDirection('previous');
     setActiveIndex((currentIndex) =>
       currentIndex === null
         ? currentIndex
@@ -34,10 +37,49 @@ export default function GallerySection() {
     );
   }, []);
   const showNextImage = useCallback(() => {
+    setLightboxDirection('next');
     setActiveIndex((currentIndex) =>
       currentIndex === null ? currentIndex : (currentIndex + 1) % galleryImages.length
     );
   }, []);
+  const handleLightboxTouchStart = useCallback((event) => {
+    if (event.touches.length !== 1) {
+      return;
+    }
+
+    const touch = event.touches[0];
+    lightboxTouchStart.current = {
+      x: touch.clientX,
+      y: touch.clientY,
+    };
+  }, []);
+  const handleLightboxTouchEnd = useCallback(
+    (event) => {
+      const start = lightboxTouchStart.current;
+      lightboxTouchStart.current = null;
+
+      if (!start || event.changedTouches.length === 0) {
+        return;
+      }
+
+      const touch = event.changedTouches[0];
+      const deltaX = touch.clientX - start.x;
+      const deltaY = touch.clientY - start.y;
+      const isIntentionalVerticalSwipe =
+        Math.abs(deltaY) >= 60 && Math.abs(deltaY) > Math.abs(deltaX) * 1.25;
+
+      if (!isIntentionalVerticalSwipe) {
+        return;
+      }
+
+      if (deltaY < 0) {
+        showNextImage();
+      } else {
+        showPreviousImage();
+      }
+    },
+    [showNextImage, showPreviousImage]
+  );
 
   useEffect(() => {
     if (activeIndex === null) {
@@ -109,7 +151,14 @@ export default function GallerySection() {
       <div className="section-wrap pt-8 md:pt-10">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:gap-5">
           {galleryImages.map((image, index) => (
-            <GalleryImage key={image.src} {...image} onClick={() => setActiveIndex(index)} />
+            <GalleryImage
+              key={image.src}
+              {...image}
+              onClick={() => {
+                setLightboxDirection('next');
+                setActiveIndex(index);
+              }}
+            />
           ))}
         </div>
 
@@ -187,13 +236,21 @@ export default function GallerySection() {
 
           <div className="pointer-events-none flex h-full w-full max-w-6xl flex-col items-center justify-center gap-4">
             <img
+              key={`${activeImage.src}-${lightboxDirection}`}
               src={activeImage.src}
               alt={activeImage.alt}
-              className="pointer-events-auto max-h-[78vh] w-auto max-w-full rounded-lg object-contain shadow-[0_22px_70px_rgba(0,0,0,0.32)]"
+              className={`pointer-events-auto max-h-[78vh] w-auto max-w-full touch-none select-none rounded-lg object-contain shadow-[0_22px_70px_rgba(0,0,0,0.32)] ${
+                lightboxDirection === 'previous'
+                  ? 'lightbox-image-slide-down'
+                  : 'lightbox-image-slide-up'
+              }`}
               width="1200"
               height="780"
               decoding="async"
+              draggable="false"
               onClick={(event) => event.stopPropagation()}
+              onTouchStart={handleLightboxTouchStart}
+              onTouchEnd={handleLightboxTouchEnd}
               onError={(event) => {
                 event.currentTarget.onerror = null;
                 event.currentTarget.src = '/images/interior.png';

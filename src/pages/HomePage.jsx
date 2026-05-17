@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
   BadgeCheck,
+  ChevronLeft,
+  ChevronRight,
   Gem,
   Heart,
   HeartHandshake,
   MapPin,
   ShieldCheck,
   Sparkles,
+  X,
 } from 'lucide-react';
 import HeroSection from '../components/HeroSection';
-import PopularServicesSection from '../components/PopularServicesSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import PageMeta from '../components/PageMeta';
 import { businessInfo } from '../data/businessInfo';
@@ -42,6 +44,94 @@ const benefits = [
 
 export default function HomePage() {
   const previewImages = galleryImages.slice(0, 6);
+  const [activePreviewIndex, setActivePreviewIndex] = useState(null);
+  const [lightboxDirection, setLightboxDirection] = useState('next');
+  const lightboxTouchStart = useRef(null);
+  const activePreviewImage =
+    activePreviewIndex === null ? null : previewImages[activePreviewIndex];
+
+  const closeLightbox = useCallback(() => setActivePreviewIndex(null), []);
+  const showPreviousImage = useCallback(() => {
+    setLightboxDirection('previous');
+    setActivePreviewIndex((currentIndex) =>
+      currentIndex === null
+        ? currentIndex
+        : (currentIndex - 1 + previewImages.length) % previewImages.length
+    );
+  }, [previewImages.length]);
+  const showNextImage = useCallback(() => {
+    setLightboxDirection('next');
+    setActivePreviewIndex((currentIndex) =>
+      currentIndex === null ? currentIndex : (currentIndex + 1) % previewImages.length
+    );
+  }, [previewImages.length]);
+  const handleLightboxTouchStart = useCallback((event) => {
+    if (event.touches.length !== 1) {
+      return;
+    }
+
+    const touch = event.touches[0];
+    lightboxTouchStart.current = {
+      x: touch.clientX,
+      y: touch.clientY,
+    };
+  }, []);
+  const handleLightboxTouchEnd = useCallback(
+    (event) => {
+      const start = lightboxTouchStart.current;
+      lightboxTouchStart.current = null;
+
+      if (!start || event.changedTouches.length === 0) {
+        return;
+      }
+
+      const touch = event.changedTouches[0];
+      const deltaX = touch.clientX - start.x;
+      const deltaY = touch.clientY - start.y;
+      const isIntentionalVerticalSwipe =
+        Math.abs(deltaY) >= 60 && Math.abs(deltaY) > Math.abs(deltaX) * 1.25;
+
+      if (!isIntentionalVerticalSwipe) {
+        return;
+      }
+
+      if (deltaY < 0) {
+        showNextImage();
+      } else {
+        showPreviousImage();
+      }
+    },
+    [showNextImage, showPreviousImage]
+  );
+
+  useEffect(() => {
+    if (activePreviewIndex === null) {
+      return undefined;
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        closeLightbox();
+      }
+
+      if (event.key === 'ArrowLeft') {
+        showPreviousImage();
+      }
+
+      if (event.key === 'ArrowRight') {
+        showNextImage();
+      }
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [activePreviewIndex, closeLightbox, showNextImage, showPreviousImage]);
 
   return (
     <>
@@ -50,24 +140,6 @@ export default function HomePage() {
         description="Clean salon, friendly nail techs, and quality results at Fabulous 10 Nails in Pennsburg, PA. Book online, call now, or get directions."
       />
       <HeroSection />
-
-      <section className="bg-brand-ivory py-10">
-        <div className="section-wrap">
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {benefits.map(({ icon: Icon, title, text }) => (
-              <article key={title} className="surface-card p-7 text-center">
-                <span className="icon-bubble mx-auto mb-4">
-                  <Icon className="h-6 w-6" />
-                </span>
-                <h2 className="mb-2 text-xl">{title}</h2>
-                <p className="text-sm leading-6 text-brand-charcoal/68">{text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <PopularServicesSection compact />
 
       <section className="relative overflow-hidden bg-brand-ivory py-12 md:py-16">
         <span className="petal right-8 top-10 hidden rotate-45 md:block" />
@@ -112,17 +184,42 @@ export default function HomePage() {
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
-            {previewImages.map((image) => (
-              <Link key={image.src} className="group block overflow-hidden rounded-lg" to="/gallery">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {previewImages.map((image, index) => (
+              <button
+                key={image.src}
+                type="button"
+                className="group block w-full overflow-hidden rounded-lg text-left transition focus:outline-none focus:ring-4 focus:ring-brand-berry/25"
+                onClick={() => {
+                  setLightboxDirection('next');
+                  setActivePreviewIndex(index);
+                }}
+                aria-label={`Open larger view of ${image.alt}`}
+              >
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="aspect-[1.8/1] w-full object-cover transition duration-300 group-hover:scale-105"
+                  className="aspect-[4/5] w-full object-cover object-center transition duration-300 group-hover:scale-105"
                   loading="lazy"
                   decoding="async"
                 />
-              </Link>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-10">
+        <div className="section-wrap">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {benefits.map(({ icon: Icon, title, text }) => (
+              <article key={title} className="surface-card p-7 text-center">
+                <span className="icon-bubble mx-auto mb-4">
+                  <Icon className="h-6 w-6" />
+                </span>
+                <h2 className="mb-2 text-xl">{title}</h2>
+                <p className="text-sm leading-6 text-brand-charcoal/68">{text}</p>
+              </article>
             ))}
           </div>
         </div>
@@ -162,6 +259,76 @@ export default function HomePage() {
         </div>
       </section>
       <TestimonialsSection />
+
+      {activePreviewImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-brand-charcoal/92 px-4 py-5 backdrop-blur-sm sm:px-6"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Expanded nail inspiration photo"
+          onClick={closeLightbox}
+        >
+          <button
+            type="button"
+            className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/92 text-brand-charcoal shadow-soft transition hover:bg-white focus:outline-none focus:ring-4 focus:ring-white/35 md:right-6 md:top-6"
+            onClick={closeLightbox}
+            aria-label="Close nail inspiration photo"
+          >
+            <X className="h-5 w-5" />
+          </button>
+
+          <button
+            type="button"
+            className="absolute left-3 top-1/2 z-10 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/92 text-brand-charcoal shadow-soft transition hover:bg-white focus:outline-none focus:ring-4 focus:ring-white/35 md:left-6"
+            onClick={(event) => {
+              event.stopPropagation();
+              showPreviousImage();
+            }}
+            aria-label="View previous nail inspiration photo"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+
+          <div className="pointer-events-none flex h-full w-full max-w-6xl flex-col items-center justify-center gap-4">
+            <img
+              key={`${activePreviewImage.src}-${lightboxDirection}`}
+              src={activePreviewImage.src}
+              alt={activePreviewImage.alt}
+              className={`pointer-events-auto max-h-[78vh] w-auto max-w-full touch-none select-none rounded-lg object-contain shadow-[0_22px_70px_rgba(0,0,0,0.32)] ${
+                lightboxDirection === 'previous'
+                  ? 'lightbox-image-slide-down'
+                  : 'lightbox-image-slide-up'
+              }`}
+              decoding="async"
+              draggable="false"
+              onClick={(event) => event.stopPropagation()}
+              onTouchStart={handleLightboxTouchStart}
+              onTouchEnd={handleLightboxTouchEnd}
+            />
+            <div
+              className="pointer-events-auto max-w-[min(100%,42rem)] text-center text-white"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <p className="text-sm font-semibold leading-6">{activePreviewImage.alt}</p>
+              <p className="mt-1 text-xs font-medium uppercase tracking-[0.22em] text-white/72">
+                {activePreviewIndex + 1} / {previewImages.length}
+              </p>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            className="absolute right-3 top-1/2 z-10 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/92 text-brand-charcoal shadow-soft transition hover:bg-white focus:outline-none focus:ring-4 focus:ring-white/35 md:right-6"
+            onClick={(event) => {
+              event.stopPropagation();
+              showNextImage();
+            }}
+            aria-label="View next nail inspiration photo"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
+        </div>
+      )}
     </>
   );
 }
